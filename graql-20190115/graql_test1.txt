@@ -1,0 +1,47 @@
+define
+
+    person sub entity
+        has name
+        has expertise
+        key email
+        plays Participant
+        plays Researcher;
+	
+	Participant sub role;
+	Researcher sub role;
+	
+    project sub entity
+        has title
+        has keyword
+        plays Proj;
+	
+	Proj sub role;
+
+    organization sub entity
+        has name
+        plays Institute;
+		
+	Institute sub role;
+
+    participation sub relationship
+        has postition
+        relates	Proj
+        relates	Participant;
+
+    work sub relationsip
+		has department
+		has title
+        relates Institute
+        relates Researcher;
+	
+	cooperation sub relationship
+		relates Researcher;
+	
+    name sub attribute datatype string;
+    expertise sub attribute datatype string;
+	keyword sub attribute datatype string;
+    email sub attribute datatype string;
+    title sub attribute datatype string;   
+	
+	department sub attribute datatype string;
+    postition sub attribute datatype string regex /[PI, CO_PI, MEMBER]/;
